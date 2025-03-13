@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Fill Your Resume Details</title>
+</head>
+<body>
+
+<div class="container">
+    <h1>📝 Create Your Resume</h1>
+
+    <!-- Profile Picture Upload -->
+    <input type="file" id="profilePic" accept="image/*">
+    <br>
+    <img id="previewPic" class="profile-pic" src="" alt="Profile Picture">
+
+    <!-- Form Fields -->
+    <form action="/create" method="post">
+        <input type="text" name="name" placeholder="Your full name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <input type="tel" name="phone" placeholder="Your phone number" required>
+        <textarea name="objective" placeholder="Your objective"></textarea>
+        <input type="text" name="experience" placeholder="Experience (Company - Role - Years)" required>
+        <input type="text" name="skills" placeholder="Skills (e.g., Python, Flask, HTML)" required>
+        <input type="text" name="education" placeholder="Education (Degree - Institution - Year)" required>
+
+        <!-- Template selection -->
+        <select name="template">
+            <option value="resume_template1.html">Template 1</option>
+            <option value="resume_template2.html">Template 2</option>
+        </select>
+
+        <!-- Generate Resume Button -->
+        <button type="submit">Generate Resume</button>
+        <button id="darkModeToggle" type="button">🌙 Dark Mode</button>
+    </form>
+</div>
+
+<script>
+    // Profile Picture Preview
+    document.getElementById('profilePic').addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            document.getElementById('previewPic').src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
+
+    // Dark Mode Toggle
+    const toggle = document.getElementById('darkModeToggle');
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    });
+
+    // Keep mode on reload
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+    }
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h1 { color: #4CAF50; }
+        h2 { border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+        p { line-height: 1.5; }
+    </style>
+</head>
+<body>
+
+<h1>{{ data.name }}</h1>
+<p>Email: {{ data.email }} | Phone: {{ data.phone }}</p>
+
+<h2>Objective</h2>
+<p>{{ data.objective }}</p>
+
+<h2>Experience</h2>
+<ul>
+    {% for exp in data.experience %}
+    <li>{{ exp }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Skills</h2>
+<ul>
+    {% for skill in data.skills %}
+    <li>{{ skill }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Education</h2>
+<ul>
+    {% for edu in data.education %}
+    <li>{{ edu }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
