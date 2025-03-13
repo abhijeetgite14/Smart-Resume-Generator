@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Create Your Resume</title>
+</head>
+<body>
+
+<div class="container">
+    <h1>📄 Fill Your Resume Details</h1>
+
+    <form action="/generate" method="post">
+        <input type="text" name="name" placeholder="Your Full Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="tel" name="phone" placeholder="Your Phone Number" required>
+        <textarea name="objective" placeholder="Your Career Objective" required></textarea>
+        <textarea name="experience" placeholder="Experience (One per line)" required></textarea>
+        <input type="text" name="skills" placeholder="Skills (comma separated)" required>
+        <textarea name="education" placeholder="Education (One per line)" required></textarea>
+
+        <button type="submit">Generate Resume ✅</button>
+    </form>
+
+    <button id="darkModeToggle">🌙 Dark Mode</button>
+</div>
+
+<script>
+    // Dark Mode Toggle
+    const toggle = document.getElementById('darkModeToggle');
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    });
+
+    // Persist Dark Mode on reload
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+    }
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
